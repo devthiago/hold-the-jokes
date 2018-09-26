@@ -10,7 +10,7 @@
     "test": "nwb test",
     "test:coverage": "nwb test --coverage",
     "test:watch": "nwb test --server",
-    "push:gh-pages": "git subtree push --prefix public origin gh-pages",
+    "push:gh-pages": "git subtree push --prefix dist origin gh-pages",
     "publish": "npm run build; npm run push:gh-pages"
   },
   "dependencies": {
