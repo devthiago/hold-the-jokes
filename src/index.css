@@ -1,0 +1,14 @@
+.header {
+  padding-top: 50px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+}
+
+.header p {
+  font-weight: 400;
+}
+
+.counter {
+  height: 200px;
+  margin-top: 300px;
+}
