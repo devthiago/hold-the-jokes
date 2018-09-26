@@ -1,3 +1,6 @@
 module.exports = {
-  type: 'web-app'
+  type: 'web-app',
+  webpack: {
+	publicPath: ''
+  }
 }
