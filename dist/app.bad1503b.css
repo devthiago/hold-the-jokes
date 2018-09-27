@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+}
+
+.header {
+  padding-top: 50px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  margin-bottom: 80px;
+}
+
+main, .header, .footer {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+.header p {
+  font-weight: 400;
+}
+
+.footer {
+  margin-top: 80px;
+}
+
+.counter {
+  margin-bottom: 80px;
+}
+
+/*# sourceMappingURL=app.bad1503b.css.map*/
