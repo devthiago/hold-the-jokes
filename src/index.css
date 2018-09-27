@@ -1,14 +1,27 @@
+html, body {
+  height: 100%;
+}
+
 .header {
   padding-top: 50px;
   font-family: 'Archivo', sans-serif;
   font-weight: 700;
+  margin-bottom: 80px;
+}
+
+main, .header, .footer {
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .header p {
   font-weight: 400;
 }
 
+.footer {
+  margin-top: 80px;
+}
+
 .counter {
-  height: 200px;
-  margin-top: 300px;
+  margin-bottom: 80px;
 }
