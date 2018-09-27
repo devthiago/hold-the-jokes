@@ -4,4 +4,4 @@ about: Say which joke Thiago has said
 
 ---
 
-TOLD HERE THE JOKE TOLD BY THIAGO
+TELL US THE JOKE TOLD BY THIAGO
