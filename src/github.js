@@ -27,5 +27,10 @@ class Issue {
 export const fetchIssues = () => (
   fetch(`${GITHUB_API}?${GITHUB_PARAMS}`)
     .then((resp) => resp.json())
-    .then((data) => data && data.map((issue) => new Issue(issue)))
+    .then((data) => {
+      if (Array.isArray(data)) {
+       return data.map((issue) => new Issue(issue))
+      }
+      return []
+    })
 )
