@@ -1,1 +1,0 @@
-export default 'sep,26,2018,17:19:00'

@@ -6,12 +6,12 @@
   "scripts": {
     "build": "nwb build-web-app",
     "clean": "nwb clean-app",
-    "start": "nwb serve-web-app --reload",
+    "start": "export NODE_ENV=development && nwb serve-web-app --reload",
     "test": "nwb test",
     "test:coverage": "nwb test --coverage",
     "test:watch": "nwb test --server",
     "push:gh-pages": "git subtree push --prefix=dist origin gh-pages",
-    "publish": "npm run build; npm run push:gh-pages"
+    "publish": "npm run build; git add .; git commit -m \"Upgrade dist content\"; git push; npm run push:gh-pages"
   },
   "dependencies": {},
   "devDependencies": {

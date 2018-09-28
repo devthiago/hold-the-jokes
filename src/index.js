@@ -1,30 +1,47 @@
 import './index.css'
-import countFrom from './count-from.js'
+import { reportsTemplate, reportsContainerTemplate } from './templates.js'
+import { fetchIssues } from './github.js'
+import counter from './counter.js'
 
 const daysElement = document.getElementById('days')
 const hoursElement = document.getElementById('hours')
 const minutesElement = document.getElementById('minutes')
 const secondsElement = document.getElementById('seconds')
+const reportsElement = document.getElementById('reports')
 
-let TIMEOUT_ID = null
+let COUNTER_TIMEOUT_ID = null
+let POLLING_TIMEOUT_ID = null
 
-const setTimeValue = (selector, value) => {
+const renderCounterValue = (selector, value) => {
 	const hasLeftZero = `${value}`.length === 1
 	selector.innerHTML = hasLeftZero ? `0${value}` : value
 }
 
-const uptime = (date) => {
-  const now = new Date()
-  const countFromDate = new Date(date)
-  const diff = now - countFromDate
+const renderCounter = (date) => {
+  const { days, hours, minutes, seconds } = counter(date)
 
-  setTimeValue(daysElement, Math.floor(diff / (60 * 60 * 1000 * 24) * 1))
-  setTimeValue(hoursElement, Math.floor((diff % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1))
-  setTimeValue(minutesElement, Math.floor(((diff % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1))
-  setTimeValue(secondsElement, Math.floor((((diff % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1))
+  renderCounterValue(daysElement, days)
+  renderCounterValue(hoursElement, hours)
+  renderCounterValue(minutesElement, minutes)
+  renderCounterValue(secondsElement, seconds)
 
-  clearTimeout(TIMEOUT_ID)
-  TIMEOUT_ID = setTimeout(() => uptime(countFromDate), 1000)
+  clearTimeout(COUNTER_TIMEOUT_ID)
+  COUNTER_TIMEOUT_ID = setTimeout(() => renderCounter(date), 1000)
 }
 
-window.onload = () => uptime(countFrom)
+const renderIssues = (issues) => {
+  if (issues.length === 0) {
+    return null
+  }
+
+  const reports = issues.map(reportsTemplate).join('')
+  reportsElement.innerHTML = reportsContainerTemplate(reports)
+
+  return issues[0].date;
+}
+
+window.onload = () => {
+  fetchIssues()
+    .then(renderIssues)
+    .then(renderCounter)
+}
