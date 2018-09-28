@@ -1,4 +1,4 @@
-const label = process.env.NODE_ENV === 'development' ? 'testjoke' : 'jokes'
+const label = process.env.NODE_ENV === 'development' ? 'testjoke' : 'joke'
 const GITHUB_API = 'https://api.github.com/repos/devthiago/hold-the-jokes/issues'
 const GITHUB_PARAMS = ['state=closed', `labels=${label}`].join('&')
 
