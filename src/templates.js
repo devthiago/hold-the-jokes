@@ -1,4 +1,5 @@
 import counter, { baseCounterValue } from './counter.js'
+import { mdToHtml } from './markdown'
 
 export const reportTimeTemplate = (date, nextDate) => {
   const { days, hours, minutes, seconds } = counter(date, nextDate)
@@ -6,7 +7,7 @@ export const reportTimeTemplate = (date, nextDate) => {
 }
 
 export const reportsTemplate = (issue, index, issues) => {
-  const prevIssue = issues[index + 1];
+  const prevIssue = issues[index + 1]
 
   return `
     <div class="row comment-box p-1 pt-3 pr-4">
@@ -19,20 +20,25 @@ export const reportsTemplate = (issue, index, issues) => {
             <p class="w-100 p-2 m-0">
               <strong>@${issue.snitch} says that Thiago said:</strong>
             </p>
-            <p class="w-100 p-2 m-0">${issue.message}</p>
+            <p class="w-100 p-2 m-0">${mdToHtml(issue.message)}</p>
           </div>
           <div class="col-lg-4 col-6">
             <p class="w-100 p-2 m-0">
-              <span class="float-right">${reportTimeTemplate(issue.date, ((prevIssue && prevIssue.date) || baseCounterValue))}</span>
+              <span class="float-right">
+              ${reportTimeTemplate(
+                issue.date,
+                (prevIssue && prevIssue.date) || baseCounterValue
+              )}
+              </span>
             </p>
           </div>
-        </div>    
+        </div>
       </div>
     </div>
   `
 }
 
-export const reportsContainerTemplate = (reports) => {
+export const reportsContainerTemplate = reports => {
   return `
     <div class="row issues">
       <div class="col-12">
