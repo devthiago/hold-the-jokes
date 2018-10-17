@@ -13,7 +13,9 @@
     "push:gh-pages": "git subtree push --prefix=dist origin gh-pages",
     "publish": "npm run build; git add .; git commit -m \"Upgrade dist content\"; git push; npm run push:gh-pages"
   },
-  "dependencies": {},
+  "dependencies": {
+    "showdown": "^1.8.6"
+  },
   "devDependencies": {
     "nwb": "0.23.x"
   },
