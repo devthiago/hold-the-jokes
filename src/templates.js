@@ -20,7 +20,6 @@ export const reportsTemplate = (issue, index, issues) => {
             <p class="w-100 p-2 m-0">
               <strong>@${issue.snitch} says that Thiago said:</strong>
             </p>
-            <p class="w-100 p-2 m-0">${mdToHtml(issue.message)}</p>
           </div>
           <div class="col-lg-4 col-6">
             <p class="w-100 p-2 m-0">
@@ -31,6 +30,11 @@ export const reportsTemplate = (issue, index, issues) => {
               )}
               </span>
             </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="p-2 m-0">${mdToHtml(issue.message)}</div>
           </div>
         </div>
       </div>
