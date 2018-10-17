@@ -37,6 +37,10 @@ main, .header, .footer {
   box-shadow: 0px 5px 8px -4px #c1c1c1;
 }
 
+.user-comment img {
+  max-width: 100%;
+}
+
 .user-comment span {
   color: #a0a0a0;
 }
@@ -50,5 +54,5 @@ main, .header, .footer {
   position: absolute;
   border-style: solid;
   border-width: 13px 0 0 13px;
-  border-color: #f3f3f3 transparent transparent transparent; 
+  border-color: #f3f3f3 transparent transparent transparent;
 }
